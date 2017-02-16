@@ -9,19 +9,25 @@ class List extends React.Component {
   
   editListTitle() {
       this.props.onListEditFormOpen(this.props.title);
-      console.log(this.props.title);
   }
   
   deleteList() {
       this.props.onDelete(this.props.index);
   }
-  
+
+  deleteNote() {
+      this.props.onNoteDelete(this.props.noteIndex);
+      // console.log(this.props.index);
+    }
+
   render () {
       const notes = this.props.cards.map((card, i) => {
           return(
               <Note 
                   key={"note-" + i}
                   text={card.text}
+                  noteIndex={i}
+                  onNoteDelete={this.deleteNote.bind(this)}
               />
           );
       });

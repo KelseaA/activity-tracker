@@ -45,6 +45,11 @@ body {
 	position: absolute;
 	top: .25rem;
 	right: 1rem;
+	z-index: 999;
+}
+.note-delete{
+	top: -.25rem;
+	right: 1.5rem;
 }
 .delete:hover{
 	color: #fff;

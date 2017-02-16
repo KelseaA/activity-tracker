@@ -76,7 +76,15 @@ class ListDashboard extends React.Component{
     }
     deleteList(index){
         const lists = this.state.lists;
+        console.log(index);
         lists.splice(index, 1);
+        this.setState({
+            lists: lists
+        });
+    }
+    deleteNote(index, noteIndex){
+        const lists = this.state.lists;
+        lists[index].cards.splice(noteIndex, 1);
         this.setState({
             lists: lists
         });
@@ -131,6 +139,8 @@ class ListDashboard extends React.Component{
                     onListEdit={this.editListForm.bind(this)}
                     onEditNote={this.editNoteForm.bind(this)}
                     onDelete={this.deleteList.bind(this)}
+                    onNoteDelete={this.deleteNote.bind(this)}
+                    noteIndex={i}
                 />
             );
         });
@@ -138,7 +148,7 @@ class ListDashboard extends React.Component{
         if (this.state.formOpen) {
               noteForm = <NoteForm 
                             onAdd={this.addNote.bind(this)}
-                            onCancel={this.toggleNoteForm.bind(this)} 
+                            onCancel={this.toggleNoteForm.bind(this)}
                         />;
         } else {
               noteForm = "";
